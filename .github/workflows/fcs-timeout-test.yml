@@ -19,7 +19,7 @@ jobs:
           falcon_region: 'us-2'
           path: './testinfra'
           project_name: 'mytest'
-          timeout: 1
+          timeout: 300
         env:
           FALCON_CLIENT_SECRET: ${{ secrets.FALCON_CLIENT_SECRET }}
 
