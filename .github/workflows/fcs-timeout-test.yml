@@ -19,7 +19,7 @@ jobs:
           falcon_region: 'us-2'
           path: './my-iac-directory'
           project_name: '${{ github.repository }}/${{ github.ref_name }}'
-          timeout: 300
+          timeout: 1
         env:
           FALCON_CLIENT_SECRET: ${{ secrets.FALCON_CLIENT_SECRET }}
 
