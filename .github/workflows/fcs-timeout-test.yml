@@ -27,6 +27,5 @@ jobs:
         if: always()
         run: |
           echo "========================================="
-          echo " Timeout used : 300s"
           echo " Exit code    : ${{ steps.fcs.outputs.exit-code }}"
           echo "========================================="
