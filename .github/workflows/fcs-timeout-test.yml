@@ -17,7 +17,7 @@ jobs:
         with:
           falcon_client_id: ${{ vars.FALCON_CLIENT_ID }}
           falcon_region: 'us-2'
-          path: './my-iac-directory'
+          path: './testinfra'
           project_name: '${{ github.repository }}/${{ github.ref_name }}'
           timeout: 1
         env:
