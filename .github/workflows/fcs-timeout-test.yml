@@ -1,0 +1,32 @@
+name: FCS Timeout Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  iac-scan:
+    runs-on: ubuntu-latest
+    name: "IaC Scan with Inline Timeout"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run FCS IaC Scan
+        uses: crowdstrike/fcs-action@v3.0.0
+        id: fcs
+        with:
+          falcon_client_id: ${{ vars.FALCON_CLIENT_ID }}
+          falcon_region: 'us-2'
+          path: './my-iac-directory'
+          project_name: '${{ github.repository }}/${{ github.ref_name }}'
+          timeout: 300
+        env:
+          FALCON_CLIENT_SECRET: ${{ secrets.FALCON_CLIENT_SECRET }}
+
+      - name: Show results
+        if: always()
+        run: |
+          echo "========================================="
+          echo " Timeout used : 300s"
+          echo " Exit code    : ${{ steps.fcs.outputs.exit-code }}"
+          echo "========================================="
